@@ -1,27 +1,42 @@
 // Obtener y guardar los estudiantes de la base de datos de  la interfaz de usuario 
 //<!--input-name , input-lastname , btn-add-student -->
 
-const inputName = document.querySelector('.input-name')
-const inputLastName = document.querySelector('.input-lastname')
-const buttonAddStudent = document.querySelector('.btn-add-student')
+const inputName = document.querySelector('.input-name');
+const inputLastName = document.querySelector('.input-lastname');
+const buttonAddStudent = document.querySelector('.btn-add-student');
 
-buttonAddStudent.addEventListener('click' , () => {
+export function addDataStudent(){
 
-    let name = inputName.value
-    let lastname = inputLastName.value
+    function focusBtn(elemento){
 
-    if(name.trim() === '' && lastname.trim() === ''){
+        elemento.addEventListener('keydown' , (e) =>{
 
-        const estudiante = {
-
-            name : name , 
-            lastname : lastname 
-
-        }
+            if(e.key === 'Enter'){
+                e.preventDefault();
+                buttonAddStudent.focus();
+                buttonAddStudent.click();
+    
+            }
+        })
     }
 
-    fetch(url , {
-        method : 'POST' , 
-        
-    })
-})
+    focusBtn(inputLastName);
+    focusBtn(inputName);
+
+    buttonAddStudent.addEventListener('click' , () => {
+
+        let name = inputName.value;
+        let lastname = inputLastName.value;
+
+        if(name.trim() === '' && lastname.trim() === ''){
+
+            alert('Por favor complete los datos del estudiante para continuar ');
+
+        }
+
+        // console.log({ name , lastname })
+
+        inputName.value = '' ; 
+        inputLastName.value = '' ; 
+    });
+}
