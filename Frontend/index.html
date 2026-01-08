@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de api</title>
+    <title>Estudiantes del colegio Mariano Ospina Rodriguez</title>
 </head>
 <body>
-    <h1>Pokemones</h1>
+    <h1>Estudiantes del colegio Mariano Ospina Rodriguez</h1>
+
+    <h1>Agregar esudiantes a la base datos </h1>
+
+<!---formulario para agregar estudiantes a la base datos -->
+
+    <div class="add-student-container">
+
+        <label for="name">
+            Nombre del estudiante : <input type="text" id="name" placeholder="Nombre del estudiante" class="input-name">
+        </label>
+
+        <label for="lastneme">
+            Apellido del estudiante : <input type="text" id="lastname" placeholder="Apellido del estudiante" class="input-lastname">
+        </label>
+
+        <button class="btn-add-student">Agregar estudiante</button>
+ 
+    </div>
 
     <div class="container">
-
-        <!--Este div va a contrener los pokemones que vienen de la api -->
-
-        <div class="pokemon-containerq">
+        <div class="student-container">
+           
 
         </div>
     </div>
+
+
+
+    
+
+    <script src="./js/main.js" type="module"></script>
 </body>
-<script src="./js/main.js" type="module"></script>
 </html>
