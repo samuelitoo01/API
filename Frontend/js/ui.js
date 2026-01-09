@@ -2,7 +2,7 @@
 //<!--input-name , input-lastname , btn-add-student -->
 
 const inputName = document.querySelector('.input-name');
-const inputLastName = document.querySelector('.input-lastname');
+const inputEmail = document.querySelector('.input-email');
 const buttonAddStudent = document.querySelector('.btn-add-student');
 
 export function addDataStudent(){
@@ -20,23 +20,23 @@ export function addDataStudent(){
         })
     }
 
-    focusBtn(inputLastName);
+    focusBtn(inputEmail);
     focusBtn(inputName);
 
     buttonAddStudent.addEventListener('click' , () => {
 
         let name = inputName.value;
-        let lastname = inputLastName.value;
+        let email = inputEmail.value;
 
-        if(name.trim() === '' && lastname.trim() === ''){
+        if(name.trim() === '' && email.trim() === ''){
 
             alert('Por favor complete los datos del estudiante para continuar ');
 
         }
 
-        // console.log({ name , lastname })
+        console.log({ name , email })
 
         inputName.value = '' ; 
-        inputLastName.value = '' ; 
+        inputEmail.value = '' ; 
     });
 }
