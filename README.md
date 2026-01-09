@@ -1,2 +1,13 @@
-Software con base de datos para administrar los usuarios de un colegio , CRUD completo con rutas HTTPS. 
-tecnologias utilizadas js , tailwind por ahora !
+# Resumen del proyecto
+El proyecto consiste en desarrollar un sistema basado en JavaScript, estructurado por capas, que permita la gestión de usuarios mediante una base de datos MySQL.
+
+El sistema deberá ofrecer funcionalidades CRUD básicas, permitiendo registrar, almacenar, listar, editar y eliminar usuarios. Además, cada usuario contará con un estado que podrá ser activo o inactivo, el cual permitirá controlar su disponibilidad dentro del sistema.
+
+La aplicación estará diseñada para mantener una separación clara de responsabilidades entre las capas (presentación, lógica de negocio y acceso a datos), garantizando un código más mantenible, escalable y fácil de entender.
+
+## Tecnologias utilizadas
+- TailwindCSS
+
+## Colaboradores
+- [Samuel Sarmiento](https://github.com/samuelitoo01)
+- [Jose Prieto](https://github.com/Presione-Enter-by-Jose-Prieto)
