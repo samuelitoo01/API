@@ -21,15 +21,15 @@ export async function getusuarios(req , res) {
 
 
 export function postUsuarios(req, res) {
-    const { nombre , apellido } = req.body;
+    const { nombre , correo } = req.body;
 
-    if (!nombre || !apellido) {
+    if (!nombre || !correo) {
         return res.status(400).json({
             message: 'Todos los campos son obligatorios'
         });
     }
 
-    guardarUsuario({ nombre, apellido }, (error, result) => {
+    guardarUsuario({ nombre, correo }, (error, result) => {
         if (error) {
             return res.status(500).json({
                 message: 'Error al crear usuario',
