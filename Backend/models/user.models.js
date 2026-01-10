@@ -15,14 +15,14 @@ export const obtenerUsuarios = async() => {
 }
 
 export const guardarUsuario = (user, callback) => {
-    const { nombre, apellido } = user;
+    const { nombre, correo } = user;
 
     const sql = `
-        INSERT INTO usuarios (nombre, apellido)
+        INSERT INTO usuarios (nombre, correo)
         VALUES (?, ?)
     `;
 
-    datosConexion.query(sql, [nombre, apellido], (error, result) => {
+    datosConexion.query(sql, [nombre, correo], (error, result) => {
         if (error) {
             return callback(error, null);
         }
