@@ -1,6 +1,6 @@
 // Creamos los controladores de la web para administrar los usuarios por medio de metodos HTPS
 
-import { obtenerUsuarios , guardarUsuario } from "../models/user.models.js";
+import { obtenerUsuarios , guardarUsuario , eliminarUsuario} from "../models/user.models.js";
 
 export async function getusuarios(req , res) {
     
@@ -40,6 +40,31 @@ export function postUsuarios(req, res) {
         res.status(201).json({
             message: 'Usuario creado correctamente',
             id: result.insertId
+        });
+    });
+}
+
+export function eliminarUsuarioController(req, res) {
+    const { id } = req.params;
+
+    eliminarUsuario(id, (error, result) => {
+        if (error) {
+            return res.status(500).json({
+                ok: false,
+                mensaje: "Error al eliminar el usuario"
+            });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                ok: false,
+                mensaje: "Usuario no encontrado"
+            });
+        }
+
+        res.json({
+            ok: true,
+            mensaje: "Usuario eliminado correctamente"
         });
     });
 }
