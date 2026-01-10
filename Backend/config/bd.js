@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 config()
 
-const conexion = mysql2.createConnection({
+export const datosConexion = mysql2.createConnection({
     host : process.env.HOST ,  
     user : process.env.USER_DB ,
     password : '' , 
@@ -13,7 +13,7 @@ const conexion = mysql2.createConnection({
 console.log(process.env.USER_DB)
 // conexion a la base de datos de mysql 
 
-export const conexionBaseDeDatos = conexion.connect((e) => {
+export const conexionBaseDeDatos = datosConexion.connect((e) => {
     if(e){
         console.log('Algo ha salido mal en la conexion de la base de datos ' + e )
         return
@@ -21,13 +21,6 @@ export const conexionBaseDeDatos = conexion.connect((e) => {
 
     console.log('conexion exitosa con la base de datos ');
 
-    conexion.query('SELECT * FROM usuarios' , (e , results , fields )=>{
-        if(e){
-            console.log('Hubo un problema al obtener los datos de la bd');
-        }
-
-        console.log(results)
-
-    })
 })
+
 
