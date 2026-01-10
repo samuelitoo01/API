@@ -1,5 +1,5 @@
 .card-user {
-    background-color: #f0f4f8; /* color de fondo suave */
+    background-color: white; /* color de fondo suave */
     border: 1px solid #d1d9e6; /* borde ligero */
     border-radius: 10px;        /* esquinas redondeadas */
     padding: 15px 20px;         /* espacio interno */
@@ -22,3 +22,8 @@
     margin: 5px 0;
   }
   
+  .btn-delete-user{
+    
+    color: rgb(225, 118, 118); 
+    
+  }

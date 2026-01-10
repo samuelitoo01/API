@@ -25,6 +25,7 @@ export function addDataStudent(){
     focusBtn(inputName);
 
     buttonAddStudent.addEventListener('click' , () => {
+        renderizarDatosBd();
 
         let name = inputName.value;
         let email = inputEmail.value;
@@ -39,8 +40,7 @@ export function addDataStudent(){
 
         inputName.value = '' ; 
         inputEmail.value = '' ; 
-        renderizarDatosBd();
-
+        
         fetch('http://localhost:1234/usuarios/obtener', {
 
             method : 'POST' , 
@@ -77,11 +77,43 @@ export async function renderizarDatosBd(){
         let user = data[i]
         let card = document.createElement('ul')
         card.className = 'card-user'
+        card.dataset.id = user.id
         card.innerHTML = `
-        Usuario : <br>
-        nombre : ${user.nombre}
-        correo : ${user.correo}`
+        <h4>Usuario :</h4> <br>
+        <h3>Nombre : ${user.nombre}</h3>
+        <h3>Correo : ${user.correo}</h3>
+        <button class='btn-delete-user'>Eliminar</button>`
+
         containerBD.appendChild(card)
     }
     
 }
+
+export function eliminarDatos() {
+    containerBD.addEventListener('click', (e) => {
+  
+      if (e.target.classList.contains('btn-delete-user')) {
+  
+        const confirmar = confirm('¿Seguro que quieres eliminar este usuario?');
+        if (!confirmar) return;
+  
+        const card = e.target.closest('.card-user'); // la card que se clickeó
+        const id = card.dataset.id;                  // id guardado en data-id
+  
+        fetch(`http://localhost:1234/usuarios/obtener/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          card.remove(); // elimina la card del DOM si todo salió bien
+        })
+        .catch(err => console.log('Error al eliminar:', err));
+      }
+  
+    });
+  }
+  

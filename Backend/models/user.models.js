@@ -29,3 +29,17 @@ export const guardarUsuario = (user, callback) => {
         callback(null, result);
     });
 };
+
+export function eliminarUsuario(id, callback) {
+    const sql = "DELETE FROM usuarios WHERE id = ?";
+
+    datosConexion.query(sql, [id], (error, result) => {
+        if (error) {
+            console.log("Error al eliminar usuario:", error);
+            callback(error, null);
+            return;
+        }
+
+        callback(null, result);
+    });
+}
