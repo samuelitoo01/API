@@ -6,7 +6,14 @@ El sistema deberá ofrecer funcionalidades CRUD básicas, permitiendo registrar,
 La aplicación estará diseñada para mantener una separación clara de responsabilidades entre las capas (presentación, lógica de negocio y acceso a datos), garantizando un código más mantenible, escalable y fácil de entender.
 
 ## Tecnologias utilizadas
+
 - TailwindCSS
+- JavaScript 
+- NodeJS 
+- Express 
+- Cors
+- Dotenv
+- Mysql2
 
 ## Colaboradores
 - [Samuel Sarmiento](https://github.com/samuelitoo01)
