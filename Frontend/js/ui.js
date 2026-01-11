@@ -6,6 +6,7 @@ const inputEmail = document.querySelector('.input-email');
 const buttonAddStudent = document.querySelector('.btn-add-student');
 const containerBD = document.querySelector('.container-base-datos')
 
+// Funcion para agregar estudiante a la base de datos
 export function addDataStudent(){
 
     function focusBtn(elemento){
@@ -25,7 +26,7 @@ export function addDataStudent(){
     focusBtn(inputName);
 
     buttonAddStudent.addEventListener('click' , () => {
-        renderizarDatosBd();
+        
 
         let name = inputName.value;
         let email = inputEmail.value;
@@ -54,11 +55,15 @@ export function addDataStudent(){
             })
         })
         .then((res ) => res.json())
-        .then((data ) => console.log(data))
+        .then((data ) => {
+            console.log(data)
+            renderizarDatosBd()
+        })
     
     });
 }
 
+// Funcion para listar los usuarios de la base de datos en el frontend
 function listarDatosBd(){
 
     return fetch('http://localhost:1234/usuarios/obtener')
@@ -82,13 +87,15 @@ export async function renderizarDatosBd(){
         <h4>Usuario :</h4> <br>
         <h3>Nombre : ${user.nombre}</h3>
         <h3>Correo : ${user.correo}</h3>
-        <button class='btn-delete-user'>Eliminar</button>`
-
+        <button class='btn-delete-user'>Eliminar</button>
+        <button class='actualizar-user'>Actualizar</button>`
+        
         containerBD.appendChild(card)
     }
     
 }
 
+// Funcion para eliminar usuarios de la base de datos 
 export function eliminarDatos() {
     containerBD.addEventListener('click', (e) => {
   
@@ -116,4 +123,51 @@ export function eliminarDatos() {
   
     });
   }
+
+// Funcion para actualizar usuarios de la base de datos 
+export async function actualizarUsuario() {
+    containerBD.addEventListener('click' , (e) => {
+        if(e.target.classList.contains('actualizar-user')){
+            const card = e.target.closest('.card-user')
+            const id = card.dataset.id
+
+            const nombre = prompt('Digite el nuevo nombre del usuario')
+            const correo = prompt('Digite el nuevo correo del usuario ')
+
+            if(nombre.trim() === '' || correo.trim() === '' ){
+                alert('No puedes dejar campos vacios')
+                return
+            }
+
+            fetch(`http://localhost:1234/usuarios/obtener/${id}`, {
+                method : 'PUT' , 
+                headers : {
+                    'Content-Type' : 'application/json'
+                } , body : JSON.stringify({
+                    nombre : nombre , 
+                    correo : correo
+                })})
+                .then(res => res.json())
+
+                .then(data => {
+                    console.log(data)
+                    renderizarDatosBd()
+                    alert('Usuario actualizado con exito')
+
+                })
+                .catch((e) => {
+
+                    console.error(`Algo ha salido mal al intertar actualizar el usuario ` + e.message )
+
+                })
+
+        }else{
+
+            return
+
+        }
+
+    })
+
+}
   
