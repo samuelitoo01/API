@@ -43,3 +43,17 @@ export function eliminarUsuario(id, callback) {
         callback(null, result);
     });
 }
+
+export function actualizarUsuario(id, nombre, correo, callback) {
+    const sql = "UPDATE usuarios SET nombre = ?, correo = ? WHERE id = ?";
+  
+    datosConexion.query(sql, [nombre, correo, id], (error, result) => {
+      if (error) {
+        console.log("Error al actualizar usuario:", error);
+        callback(error, null);
+        return;
+      }
+  
+      callback(null, result);
+    });
+  }

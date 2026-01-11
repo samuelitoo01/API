@@ -17,10 +17,10 @@ export const conexionBaseDeDatos = datosConexion.connect((e) => {
     if(e){
         console.log('Algo ha salido mal en la conexion de la base de datos ' + e )
         return
-    }
+    }else {
 
     console.log('conexion exitosa con la base de datos ');
-
+}
 })
 
 
